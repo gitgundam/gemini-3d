@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>办公室微缩像素 3D Diorama</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="scene-canvas"></canvas>
+
+      <!-- Top-Left Studio Title & Mode Switcher -->
+      <header class="hud-top-left">
+        <div class="brand-card">
+          <div class="brand-badge">3D DIORAMA</div>
+          <h1>我的办公室 · 像素微缩模型</h1>
+          <p class="brand-sub">Blender 建模 · Pixel-Art 材质 · 可步入式 WebGL</p>
+        </div>
+
+        <div class="mode-switch" role="tablist" aria-label="视角模式">
+          <button id="btn-mode-iso" class="mode-btn active" data-mode="iso">
+            <span class="icon">▣</span> 等轴测微缩
+          </button>
+          <button id="btn-mode-walk" class="mode-btn" data-mode="walk">
+            <span class="icon">🚶</span> 进去逛逛
+          </button>
+        </div>
+      </header>
+
+      <!-- Top-Right Layer Toggles -->
+      <aside class="hud-top-right">
+        <button id="btn-toggle-outlines" class="chip active" title="开关日系手绘描边">
+          ✎ 描边
+        </button>
+        <button id="btn-toggle-ceiling" class="chip" title="开关天花板与吊牌">
+          ▤ 天花板/吊牌
+        </button>
+        <button id="btn-toggle-windows" class="chip" title="开关前景幕墙与百叶窗">
+          ▥ 前景幕墙
+        </button>
+        <button id="btn-toggle-pins" class="chip active" title="开关场景地标提示">
+          ◎ 地标
+        </button>
+        <button id="btn-reset" class="chip" title="重置视角">
+          ↺ 重置
+        </button>
+      </aside>
+
+      <!-- Walk-in Controls Helper -->
+      <div id="walk-hint" class="walk-hint hidden">
+        <span><b>W A S D</b> / 方向键移动</span>
+        <span class="sep">·</span>
+        <span><b>鼠标拖拽</b> 环顾四周</span>
+        <span class="sep">·</span>
+        <span><b>点击地面</b> 瞬移走过去</span>
+        <span class="sep">·</span>
+        <span><b>ESC</b> 返回微缩视角</span>
+      </div>
+
+      <!-- Bottom Quick-Jump Viewpoint Bar -->
+      <nav class="hud-bottom" aria-label="快捷传送点">
+        <button class="spot-btn active" data-spot="overview">🗺 全景微缩</button>
+        <button class="spot-btn" data-spot="hangbaole">🚩 夯爆了门</button>
+        <button class="spot-btn" data-spot="pantry">☕ 茶水间</button>
+        <button class="spot-btn" data-spot="honor">🏆 HONOR墙</button>
+        <button class="spot-btn" data-spot="mydesk">💻 我的工位</button>
+        <button class="spot-btn" data-spot="corridor">🪴 绿萝长廊</button>
+        <button class="spot-btn" data-spot="wuhan">🏢 武汉会议室</button>
+        <button class="spot-btn" data-spot="tvcorner">📺 东北角TV</button>
+      </nav>
+
+      <!-- Floating 3D Landmark Labels Container -->
+      <div id="pins-layer" class="pins-layer"></div>
+
+      <!-- Loading Overlay -->
+      <div id="loader" class="loader">
+        <div class="loader-card">
+          <div class="loader-cube"></div>
+          <div class="loader-title">正在加载办公室 3D 模型…</div>
+          <div class="loader-bar"><div id="loader-fill" class="loader-fill"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

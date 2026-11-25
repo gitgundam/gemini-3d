@@ -1,0 +1,6 @@
+.DS_Store
+*.mp4
+web/node_modules/
+web/dist/
+blender/renders/
+blender/textures/_preview_sheet.png
